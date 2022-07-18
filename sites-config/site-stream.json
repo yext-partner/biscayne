@@ -1,0 +1,34 @@
+{
+    "$id": "site-entity",
+    "filter": {
+      "entityIds": [
+        "site-entity"
+      ]
+    },
+    "source": "knowledgeGraph",
+    "fields": [
+      "name",
+      "c_relatedFacility.name",
+      "c_relatedFacility.address",
+      "c_relatedFacility.mainPhone",
+      "c_relatedFacility.hours",
+      "c_relatedFacility.c_offeredServices.name",
+      "c_relatedFacility.c_offeredServices.slug",
+      "c_header",
+      "c_footer",
+      "c_primaryColor",
+      "c_secondaryColor",
+      "c_logoURL",
+      "c_accessibilityDescription",
+      "twitterHandle",
+      "instagramHandle",
+      "linkedInUrl",
+      "facebookName"
+    ],
+    "localization": {
+      "locales": [
+        "en"
+      ],
+      "primary": false
+    }
+}

@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.centered-container {
+  @apply mx-auto px-5 md:px-14 max-w-screen-xl;
+}
+
+.section {
+  @apply mt-8 mb-16;
+}
+
+.primary-cta {
+  @apply bg-sky-500 hover:bg-sky-600 cursor-pointer;
+}
+
+.secondary-cta {
+  @apply bg-sky-700 hover:bg-sky-800 cursor-pointer;
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  @apply text-4xl font-semibold;
+}
+
+h3 {
+  @apply text-xl font-semibold;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  padding: 0.3em 0;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.2em;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.link:hover::after,
+.link:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
+
+.card {
+  @apply px-5 py-5 space-y-5 border rounded-md shadow-md bg-gradient-to-t from-white to-stone-200 hover:to-stone-300;
+}
+
+.featured-service {
+  @apply text-white shadow-lg bg-gradient-to-t from-stone-700 to-stone-500
+}
+
+.cta:hover {
+  @apply bg-slate-300 text-white;
+}
+
+.hero {
+  display: block;
+  height: 100%;
+}
