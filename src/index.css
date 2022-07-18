@@ -30,6 +30,10 @@ h3 {
   @apply text-xl font-semibold;
 }
 
+a {
+  @apply text-blue-700 hover:underline;
+}
+
 .link {
   color: inherit;
   text-decoration: none;
@@ -44,7 +48,7 @@ h3 {
   left: 0;
   width: 100%;
   height: 0.2em;
-  background-color: white;
+  background-color: black;
   opacity: 0;
   transition: opacity 300ms, transform 300ms;
 }
