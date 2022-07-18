@@ -110,7 +110,7 @@
  
    return (
      <>
-       <body className="fonty-main">
+       <body className="font-main">
          <Header site={_site}></Header>
          <Banner name={name} site={_site} photo={photoGallery[0].image.url} mainPhone={mainPhone}></Banner>
          {c_promotion && <Promo text={c_promotion}></Promo>}

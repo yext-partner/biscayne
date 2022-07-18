@@ -113,8 +113,6 @@ const Campaign: Default<TemplateProps> = (props) => {
             <img 
               className="section"
               src={photoGallery[0].image.url}
-              srcSet={`${small} 600w, ${photoGallery[0].image.url} 1200w`}
-              sizes="(max-width: 800px) 600px, 1200px"
             />  
           </div>
         <Footer site={_site}></Footer>
