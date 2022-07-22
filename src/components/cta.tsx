@@ -17,6 +17,7 @@ const Cta = (props: Cta) => {
   function MouseOver(event:any) {
     event.target.style.background = backgroundHover;
     event.target.style.color = fontHoverColor;
+    event.target.style.transition = "250ms";
   }
   function MouseOut(event:any){
     event.target.style.background = backgroundColor;

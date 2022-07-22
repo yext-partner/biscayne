@@ -39,6 +39,7 @@ import * as React from "react";
        "slug",
        "description",
        "richTextDescription",
+       "c_richTextDescriptionOverride",
        "c_legalApproved",
        "c_parentTopic.name",
        "c_parentTopic.slug",
@@ -79,12 +80,21 @@ import * as React from "react";
      name,
      description,
      richTextDescription,
+     c_richTextDescriptionOverride,
      logo,
      c_legalApproved,
      c_parentTopic,
    } = document;
    
-   var updatedRTD = richTextDescription;
+   // Check for RTF description override
+   var updatedRTD = "";
+   if (c_richTextDescriptionOverride) {
+    updatedRTD = c_richTextDescriptionOverride;
+   } else {
+    updatedRTD = richTextDescription;
+   }
+
+   // Localize RTF description
    updatedRTD = updatedRTD.replaceAll("{{name}}", _site.c_relatedFacility[0].name);
    updatedRTD = updatedRTD.replaceAll("{{address.city}}", _site.c_relatedFacility[0].address.city);
    updatedRTD = updatedRTD.replaceAll("{{address.region}}", _site.c_relatedFacility[0].address.region);
