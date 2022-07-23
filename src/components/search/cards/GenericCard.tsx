@@ -1,20 +1,21 @@
 import {
-    CardProps,
-    renderHighlightedValue,
-  } from "@yext/answers-react-components";
-  import * as React from "react";
-  import { FaChevronRight } from "react-icons/fa";
-  
-  const GenericCard = ({ result }: CardProps) => {
-    const title = (result.highlightedFields?.name ?? result.name) as string;
-    const description = (result.highlightedFields?.description ??
-      result.description) as string;
-  
-    return (
-      <div className="border rounded-md p-4">
+  CardProps,
+  renderHighlightedValue,
+} from "@yext/answers-react-components";
+import * as React from "react";
+import { FaChevronRight } from "react-icons/fa";
+
+const GenericCard = ({ result }: CardProps) => {
+  const title = (result.highlightedFields?.name ?? result.name) as string;
+  const description = (result.highlightedFields?.description ??
+    result.description) as string;
+
+  return (
+    <div className="border rounded-md p-4 search-card bg-white">
+      <div>
         {title && <h3 className="">{renderHighlightedValue(title)}</h3>}
         {description && (
-          <p className="text-sm text-gray-500 max-h-24 overflow-hidden search-card bg-white">
+          <p className="text-sm text-gray-500 max-h-24 overflow-hidden">
             {renderHighlightedValue(description)}
           </p>
         )}
@@ -27,8 +28,8 @@ import {
           <FaChevronRight />
         </a>
       </div>
-    );
-  };
-  
-  export default GenericCard;
-  
+    </div>
+  );
+};
+
+export default GenericCard;
