@@ -11,7 +11,7 @@ const DoctorTile = ({ result }: CardProps) => {
   const url = headshot.url;
   return (
     <a
-      className="border rounded-md flex flex-col overflow-hidden hover:shadow"
+      className="border rounded-md flex flex-col overflow-hidden search-card bg-white"
       href={result.rawData.slug as string}
     >
       {headshot && (

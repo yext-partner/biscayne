@@ -82,6 +82,9 @@ const Search: Template<TemplateRenderProps> = ({relativePrefixToRoot, path, docu
               <SearchBar />
             </div>
             <UniversalResults 
+              customCssClasses={{
+                container: "pb-10",
+              }}
               verticalConfigMap={{
                 healthcare_professionals: {
                   ...defaultVerticalConfig,

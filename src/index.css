@@ -75,3 +75,7 @@ a {
   display: block;
   height: 100%;
 }
+
+.search-card {
+  @apply drop-shadow-md hover:-translate-y-1 ease-in-out duration-300;
+}

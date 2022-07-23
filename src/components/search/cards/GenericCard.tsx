@@ -14,7 +14,7 @@ import {
       <div className="border rounded-md p-4">
         {title && <h3 className="">{renderHighlightedValue(title)}</h3>}
         {description && (
-          <p className="text-sm text-gray-500 max-h-24 overflow-hidden">
+          <p className="text-sm text-gray-500 max-h-24 overflow-hidden search-card bg-white">
             {renderHighlightedValue(description)}
           </p>
         )}
