@@ -1,34 +1,29 @@
- import * as React from "react";
- import Banner from "../components/banner";
- import Header from "../components/header";
- import Footer from "../components/footer";
- import Cta from "../components/cta";
- import List from "../components/list";
- import Hours from "../components/hours";
- 
- import Doctors from '../components/doctors';
- import Services from '../components/featured-services';
- import Insurances from '../components/insurances';
+import * as React from "react";
+import Markdown from 'markdown-to-jsx';
 
- import Markdown from 'markdown-to-jsx';
- 
- import "../index.css";
- import {
-   Default,
-   GetPath,
-   TemplateConfig,
-   TemplateProps,
-   GetHeadConfig,
-   HeadConfig,
- } from "@yext/yext-sites-scripts";
+// Pages components
+import Header from "../components/header";
+import Footer from "../components/footer";
+
+import "../index.css";
+import {
+ Template,
+ GetPath,
+ GetRedirects,
+ TemplateConfig,
+ TemplateProps,
+ TemplateRenderProps,
+ GetHeadConfig,
+ HeadConfig,
+} from "@yext/pages";
  
 
  export const config: TemplateConfig = {
   stream: {
     $id: "about-your-dentist",
     filter: {
-     savedFilterIds: [
-       '981451816'
+     entityIds: [
+       'about-your-dentist'
      ],
    },
     fields: [
@@ -47,17 +42,17 @@
   },
 };
  
- export const getPath: GetPath<TemplateProps> = (props) => {
-   return `about-your-dentist`;
+ export const getPath: GetPath<TemplateProps> = ({document}) => {
+  return `about-your-dentist`;
  };
  
- export const getHeadConfig: GetHeadConfig<TemplateProps> = (props): HeadConfig => {
-   return {
+ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({relativePrefixToRoot, path, document}): HeadConfig => {
+  return {
      title: `
       About Your Dentist | 
-      ${props.document.name} | 
-      ${props.document._site.c_relatedFacility[0].address.city}, 
-      ${props.document._site.c_relatedFacility[0].address.region}`,
+      ${document.name} | 
+      ${document._site.c_relatedFacility[0].address.city}, 
+      ${document._site.c_relatedFacility[0].address.region}`,
      charset: "UTF-8",
      viewport: "width=device-width, initial-scale=1",
      tags: [
@@ -72,8 +67,7 @@
  };
  
 
- const AboutYourDentist: Default<TemplateProps> = (props) => {
-   const { document } = props;
+ const AboutYourDentist: Template<TemplateRenderProps> = ({relativePrefixToRoot, path, document}) => {
    const {
      _site,
      c_relatedFacility

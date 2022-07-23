@@ -1,25 +1,20 @@
 import * as React from "react";
-import Banner from "../components/banner";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Cta from "../components/cta";
-import List from "../components/list";
-import Hours from "../components/hours";
-import Doctors from '../components/doctors';
-import Services from '../components/featured-services';
-import Insurances from '../components/insurances';
 import Markdown from 'markdown-to-jsx';
 import { formatPhoneNumber } from 'react-phone-number-input';
-
 import "../index.css";
 import {
-  Default,
+  Template,
   GetPath,
+  GetRedirects,
   TemplateConfig,
   TemplateProps,
+  TemplateRenderProps,
   GetHeadConfig,
   HeadConfig,
-} from "@yext/yext-sites-scripts";
+} from "@yext/pages";
 
 
 export const config: TemplateConfig = {
@@ -48,20 +43,20 @@ export const config: TemplateConfig = {
  },
 };
 
-export const getPath: GetPath<TemplateProps> = (props) => {
-  return `${props.document.slug.toString()}`;
+export const getPath: GetPath<TemplateProps> = ({document}) => {
+  return `${document.slug.toString()}`;
 };
 
-export const getHeadConfig: GetHeadConfig<TemplateProps> = (props): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({relativePrefixToRoot, path, document}): HeadConfig => {
   return {
-    title: `${props.document.name}`,
+    title: `${document.name}`,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
       {
         type: "meta",
         attributes: {
-          description: `${props.document._site.name} | ${props.document.name} campaign page!`,
+          description: `${document._site.name} | ${document.name} campaign page!`,
         },
       },
     ],
@@ -69,8 +64,7 @@ export const getHeadConfig: GetHeadConfig<TemplateProps> = (props): HeadConfig =
 };
 
 
-const Campaign: Default<TemplateProps> = (props) => {
-  const { document } = props;
+const Campaign: Template<TemplateRenderProps> = ({relativePrefixToRoot, path, document}) => {
   const {
     _site,
     name,

@@ -1,26 +1,19 @@
 import * as React from "react";
- import Banner from "../components/banner";
- import Header from "../components/header";
- import Footer from "../components/footer";
- import Cta from "../components/cta";
- import List from "../components/list";
- import Hours from "../components/hours";
- import Doctors from '../components/doctors';
- import Services from '../components/featured-services';
- import Insurances from '../components/insurances';
- import ReactMarkdown from 'react-markdown';
- import Markdown from 'markdown-to-jsx';
- import { formatPhoneNumber } from 'react-phone-number-input';
- 
- import "../index.css";
- import {
-   Default,
-   GetPath,
-   TemplateConfig,
-   TemplateProps,
-   GetHeadConfig,
-   HeadConfig,
- } from "@yext/yext-sites-scripts";
+import Markdown from 'markdown-to-jsx';
+import { formatPhoneNumber } from 'react-phone-number-input';
+import {
+  Template,
+  GetPath,
+  GetRedirects,
+  TemplateConfig,
+  TemplateProps,
+  TemplateRenderProps,
+  GetHeadConfig,
+  HeadConfig,
+ } from "@yext/pages";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import "../index.css";
  
 
  export const config: TemplateConfig = {
@@ -52,13 +45,13 @@ import * as React from "react";
    },
  };
  
- export const getPath: GetPath<TemplateProps> = (props) => {
-   return `${props.document.slug.toString()}`;
+ export const getPath: GetPath<TemplateProps> = ({document}) => {
+  return `${document.slug.toString()}`;
  };
  
- export const getHeadConfig: GetHeadConfig<TemplateProps> = (props): HeadConfig => {
-   return {
-     title: props.document.name,
+ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({relativePrefixToRoot, path, document}): HeadConfig => {
+  return {
+     title: document.name,
      charset: "UTF-8",
      viewport: "width=device-width, initial-scale=1",
      tags: [
@@ -73,8 +66,7 @@ import * as React from "react";
  };
  
 
- const Service: Default<TemplateProps> = (props) => {
-   const { document } = props;
+ const Service: Template<TemplateRenderProps> = ({relativePrefixToRoot, path, document}) => {
    const {
      _site,
      name,

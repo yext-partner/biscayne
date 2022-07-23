@@ -1,29 +1,31 @@
- import * as React from "react";
- import Banner from "../components/banner";
- import Header from "../components/header";
- import Footer from "../components/footer";
- import Promo from '../components/promo';
- import Doctors from '../components/doctors';
- import FeaturedServices from '../components/featured-services';
- import OfferedServices from '../components/offered-services';
- import Insurances from '../components/insurances';
- import Markdown from 'markdown-to-jsx';
- import "../index.css";
- import {
-   Default,
-   GetPath,
-   TemplateConfig,
-   TemplateProps,
-   GetHeadConfig,
-   HeadConfig,
- } from "@yext/yext-sites-scripts";
+import * as React from "react";
+import Banner from "../components/banner";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Promo from '../components/promo';
+import Doctors from '../components/doctors';
+import FeaturedServices from '../components/featured-services';
+import OfferedServices from '../components/offered-services';
+import Insurances from '../components/insurances';
+import Markdown from 'markdown-to-jsx';
+import "../index.css";
+import {
+ Template,
+ GetPath,
+ GetRedirects,
+ TemplateConfig,
+ TemplateProps,
+ TemplateRenderProps,
+ GetHeadConfig,
+ HeadConfig,
+} from "@yext/pages";
  
  export const config: TemplateConfig = {
    stream: {
      $id: "index-stream",
      filter: {
-      savedFilterIds: [
-        '933983808'
+      entityIds: [
+        'location'
       ],
     },
      fields: [
@@ -63,14 +65,14 @@
  };
  
  // 
- export const getPath: GetPath<TemplateProps> = (props) => {
+ export const getPath: GetPath<TemplateProps> = ({document}) => {
   return `index.html`;
 };
  
 //
- export const getHeadConfig: GetHeadConfig<TemplateProps> = (props): HeadConfig => {
-   return {
-     title: props.document.name,
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({relativePrefixToRoot, path, document}): HeadConfig => {
+  return {
+     title: document.name,
      charset: "UTF-8",
      viewport: "width=device-width, initial-scale=1",
      tags: [
@@ -85,8 +87,7 @@
  };
  
 
- const Index: Default<TemplateProps> = (props) => {
-   const { document } = props;
+ const Index: Template<TemplateRenderProps> = ({relativePrefixToRoot, path, document}) => {
    const {
      _site,
      name,
